@@ -9,7 +9,7 @@
 
 <style>
 :root{
-/* โทนสีใหม่แบบนุ่มนวล */
+/* โทนสีนุ่มนวลตามบรีฟ */
 --bg:#faefd9; 
 --main:#fede00; 
 --dark:#5d4037; 
@@ -26,7 +26,6 @@ body{
 background:var(--bg);
 display:flex;
 justify-content:center;
-/* เพิ่ม Gradient จางๆ ให้พื้นหลังดูมีมิติ */
 background: linear-gradient(135deg, #faefd9 0%, #fff9f0 100%);
 min-height: 100vh;
 }
@@ -42,7 +41,6 @@ background:var(--white);
 border-radius:24px;
 padding:30px 25px;
 margin-bottom:25px;
-/* เปลี่ยนจากเส้นขอบเป็นเงาละมุน (Soft Shadow) */
 border: none;
 box-shadow: 0 10px 30px var(--shadow);
 transition: transform 0.3s ease;
@@ -56,7 +54,7 @@ h2 { font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: center;
 
 .logo{
 width:130px;height:130px;
-border-radius:40px; /* ทรงโค้งมนแบบนุ่มๆ */
+border-radius:40px; 
 overflow:hidden;
 margin:0 auto 25px;
 box-shadow: 0 20px 40px var(--soft-glow);
@@ -65,7 +63,6 @@ border: 5px solid var(--white);
 
 .logo img{width:100%;height:100%;object-fit:cover;}
 
-/* ส่วน Badges ปุ่มกลมเล็กๆ - ปรับให้ดูเป็นเม็ดเยลลี่นุ่มๆ */
 .badges{
 display:flex;
 flex-wrap:wrap;
@@ -101,7 +98,6 @@ border: none;
     box-shadow: 0 10px 20px var(--shadow);
 }
 
-/* ปุ่มเช็คคิวงาน - ลบเส้นประ เปลี่ยนเป็น Soft Light */
 .btn-outline{
 background: var(--white);
 color:var(--dark);
@@ -180,7 +176,6 @@ box-shadow: 0 4px 10px var(--shadow);
 
 .small{font-size:11px; opacity:0.5; margin-top:25px; letter-spacing: 1px;}
 
-/* Animation อิโมจิฟุ้งๆ แบบนุ่มนวล */
 .emoji-float {
     display: inline-block;
     animation: floating 4s ease-in-out infinite;
@@ -190,7 +185,6 @@ box-shadow: 0 4px 10px var(--shadow);
     50% { transform: translateY(-8px) rotate(5deg); }
 }
 
-/* แถบสถานะแบบแคปซูลมินิมอล */
 .status-pill {
     background:var(--white); 
     padding:8px 20px; 
@@ -209,7 +203,7 @@ box-shadow: 0 4px 10px var(--shadow);
 <div class="section center" style="box-shadow:none; background:transparent;">
 
 <div class="logo">
-<img src="logo.jpg" alt="logo">
+<img src="IMG_9166.jpeg" alt="Arenar Sonin Logo">
 </div>
 
 <h1>Arenar Sonin <span class="emoji-float">🥞</span></h1>
@@ -271,9 +265,8 @@ Check Queue 🥛
 
 <script>
     // ห้ามลบ script หรือ animation ใดๆ
-    console.log("Welcome to Arenar Sonin Store - Minimal Mode Active");
+    console.log("Welcome to Arenar Sonin Store - Logo Updated");
 </script>
 
 </body>
 </html>
-
