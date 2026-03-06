@@ -9,14 +9,15 @@
 
 <style>
 :root{
-/* โทนสีใหม่ตามสั่ง */
+/* โทนสีใหม่แบบนุ่มนวล */
 --bg:#faefd9; 
 --main:#fede00; 
 --dark:#5d4037; 
 --white:#FFFFFF;
---glow:rgba(254, 222, 0, 0.4);
+--shadow: rgba(93, 64, 55, 0.08);
 --accent-blue:#dfebfd;
 --accent-pink:#ffdef1;
+--soft-glow: rgba(254, 222, 0, 0.3);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
@@ -25,152 +26,179 @@ body{
 background:var(--bg);
 display:flex;
 justify-content:center;
+/* เพิ่ม Gradient จางๆ ให้พื้นหลังดูมีมิติ */
+background: linear-gradient(135deg, #faefd9 0%, #fff9f0 100%);
+min-height: 100vh;
 }
 
 .container{
 max-width:500px;
 width:100%;
-padding:20px 15px 40px;
+padding:40px 15px;
 }
 
 .section{
 background:var(--white);
-border-radius:20px;
-padding:25px 20px;
-margin-bottom:20px;
-box-shadow:0 8px 20px rgba(0,0,0,0.05);
-border:2px solid var(--main);
+border-radius:24px;
+padding:30px 25px;
+margin-bottom:25px;
+/* เปลี่ยนจากเส้นขอบเป็นเงาละมุน (Soft Shadow) */
+border: none;
+box-shadow: 0 10px 30px var(--shadow);
+transition: transform 0.3s ease;
 }
 
-h1,h2,h3{color:var(--dark);}
+h1,h2,h3{color:var(--dark); font-weight: 500;}
+h1 { font-size: 1.8rem; letter-spacing: 1px; }
+h2 { font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+
 .center{text-align:center;}
 
 .logo{
-width:150px;height:150px;
-border-radius:50%;
+width:130px;height:130px;
+border-radius:40px; /* ทรงโค้งมนแบบนุ่มๆ */
 overflow:hidden;
-margin:0 auto 20px;
-box-shadow:0 6px 20px var(--glow);
-border: 3px solid var(--white);
+margin:0 auto 25px;
+box-shadow: 0 20px 40px var(--soft-glow);
+border: 5px solid var(--white);
 }
 
 .logo img{width:100%;height:100%;object-fit:cover;}
 
-/* ส่วน Badges ปุ่มกลมเล็กๆ - คงไว้ */
+/* ส่วน Badges ปุ่มกลมเล็กๆ - ปรับให้ดูเป็นเม็ดเยลลี่นุ่มๆ */
 .badges{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:10px;
-margin-bottom:20px;
+gap:8px;
+margin-bottom:25px;
 }
 
 .badge{
-background:var(--accent-pink);
-padding:8px 16px;
-border-radius:25px;
-box-shadow:0 4px 10px rgba(0,0,0,0.05);
-font-size:13px;
+background:var(--white);
+padding:6px 16px;
+border-radius:15px;
+box-shadow: 0 4px 15px var(--shadow);
+font-size:12px;
 color:var(--dark);
+border: 1px solid rgba(255,255,255,0.5);
 }
 
 .btn{
 display:block;
 text-align:center;
-padding:14px;
-border-radius:25px;
+padding:16px;
+border-radius:18px;
 text-decoration:none;
 margin-top:15px;
 font-weight:500;
-transition: transform 0.2s;
+transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+border: none;
 }
-.btn:hover { transform: scale(1.02); }
 
-/* ปุ่มเช็คคิวงานแบบเส้นประ - คงไว้ */
+.btn:hover { 
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--shadow);
+}
+
+/* ปุ่มเช็คคิวงาน - ลบเส้นประ เปลี่ยนเป็น Soft Light */
 .btn-outline{
-background:#fff;
-border:2px dashed var(--main) !important;
+background: var(--white);
 color:var(--dark);
+box-shadow: 0 4px 15px var(--shadow);
+font-size: 14px;
 }
 
 .btn-main{
-background:var(--main);
+background: var(--main);
 color:var(--dark);
+box-shadow: 0 8px 25px var(--soft-glow);
 }
 
 .step{
 display:flex;
 align-items:center;
-gap:12px;
-margin-bottom:12px;
+gap:15px;
+margin-bottom:16px;
+background: #fafafa;
+padding: 12px;
+border-radius: 15px;
 }
 
 .step-num{
 background:var(--accent-blue);
 color:var(--dark);
-width:26px;height:26px;
-border-radius:50%;
+width:28px;height:28px;
+border-radius:10px;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:13px;
+font-size:12px;
 font-weight: bold;
 }
 
 .price-row{
 display:flex;
 justify-content:space-between;
-margin-bottom:10px;
-background:#fffcfd;
-padding:10px 15px;
-border-radius:15px;
-border-left: 4px solid var(--accent-pink);
+margin-bottom:12px;
+background:var(--white);
+padding:15px 20px;
+border-radius:18px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
 
 .price-tag{
-background:var(--main);
 color:var(--dark);
-padding:3px 12px;
-border-radius:20px;
-font-size:14px;
-font-weight: 500;
+font-weight: 600;
+font-size:15px;
 }
 
 .footer{
 text-align:center;
-margin-top:30px;
+margin-top:40px;
 }
 
 .socials{
 display:flex;
-gap:8px;
+gap:10px;
 justify-content:center;
-margin-top:15px;
+margin-top:20px;
 }
 
 .socials a{
 flex:1;
 max-width:100px;
 text-align:center;
-padding:8px;
-border-radius:25px;
+padding:10px;
+border-radius:15px;
 background:var(--white);
 text-decoration:none;
 color:var(--dark);
-font-size:13px;
-border:1px solid var(--accent-blue);
+font-size:12px;
+box-shadow: 0 4px 10px var(--shadow);
 }
 
-.small{font-size:12px;opacity:.7;margin-top:10px;}
+.small{font-size:11px; opacity:0.5; margin-top:25px; letter-spacing: 1px;}
 
-/* Animation อิโมจิฟุ้งๆ */
+/* Animation อิโมจิฟุ้งๆ แบบนุ่มนวล */
 .emoji-float {
     display: inline-block;
-    animation: floating 3s ease-in-out infinite;
+    animation: floating 4s ease-in-out infinite;
 }
 @keyframes floating {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+/* แถบสถานะแบบแคปซูลมินิมอล */
+.status-pill {
+    background:var(--white); 
+    padding:8px 20px; 
+    border-radius:50px; 
+    margin-bottom:25px; 
+    font-size:13px; 
+    display:inline-block;
+    box-shadow: 0 4px 15px var(--shadow);
 }
 </style>
 </head>
@@ -178,51 +206,51 @@ border:1px solid var(--accent-blue);
 <body>
 <div class="container">
 
-<div class="section center" style="border:none;box-shadow:none;background:transparent;">
+<div class="section center" style="box-shadow:none; background:transparent;">
 
 <div class="logo">
 <img src="logo.jpg" alt="logo">
 </div>
 
 <h1>Arenar Sonin <span class="emoji-float">🥞</span></h1>
-<p style="color:var(--dark);opacity:.8;margin:10px 0 20px;">
+<p style="color:var(--dark); opacity:0.6; margin:10px 0 25px; font-weight: 300;">
 รับสร้างบ้านเกม Heartopia <span class="emoji-float">🍞</span>
 </p>
 
-<div style="background:var(--accent-blue); padding:8px; border-radius:15px; margin-bottom:15px; font-size:14px;">
-    สถานะ: ว่างพร้อมรับสร้างบ้าน ✨
+<div class="status-pill">
+    <span style="color: #4caf50; margin-right: 5px;">●</span> สถานะ: ว่างพร้อมรับสร้างบ้าน ✨
 </div>
 
 <div class="badges">
-<div class="badge">🏠 บ้านปกติ</div>
-<div class="badge">🌳 9 แปลง+</div>
-<div class="badge">🏰 18 แปลง</div>
+<div class="badge">Normal House</div>
+<div class="badge">9+ Plots</div>
+<div class="badge">Full 18 Plots</div>
 </div>
 
 <a href="https://www.facebook.com/share/174H8Bq6Lz/?mibextid=wwXIfr" class="btn btn-outline">
-เช็คคิวงานที่นี่ 🥛
+Check Queue 🥛
 </a>
 </div>
 
 <div class="section">
 <h2>📝 ขั้นตอนการสั่งซื้อ</h2>
 
-<div class="step"><div class="step-num">1</div><div>กดเลือกจำนวนแปลงที่ลูกค้าต้องการ 🥛</div></div>
-<div class="step"><div class="step-num">2</div><div>กดชำระเงินราคาเริ่มต้น</div></div>
-<div class="step"><div class="step-num">3</div><div>แอดเฟสและส่งแบบบ้านประเมินราคาตกแต่งและจ่ายเพิ่ม</div></div>
+<div class="step"><div class="step-num">1</div><div>เลือกจำนวนแปลงที่ต้องการ 🥛</div></div>
+<div class="step"><div class="step-num">2</div><div>ชำระเงินราคาเริ่มต้น</div></div>
+<div class="step"><div class="step-num">3</div><div>ส่งแบบบ้านประเมินราคาตกแต่ง</div></div>
 <div class="step"><div class="step-num">4</div><div>ส่งรหัสและรองานได้เยย</div></div>
 
-<a href="https://www.facebook.com/share/174H8Bq6Lz/?mibextid=wwXIfr" class="btn btn-main">สั่งซื้อ/สอบถามเพิ่มเติม</a>
+<a href="https://www.facebook.com/share/174H8Bq6Lz/?mibextid=wwXIfr" class="btn btn-main">สั่งซื้อ / สอบถามเพิ่มเติม</a>
 </div>
 
 <div class="section">
 <h2>💰 งานที่รับทำ</h2>
 
-<div class="price-row"><span>บ้านปกติ</span><span class="price-tag">เริ่มต้น 150.-</span></div>
-<div class="price-row"><span>บ้าน 9 แปลงขึ้นไป</span><span class="price-tag">เริ่มต้น 400.-</span></div>
-<div class="price-row"><span>บ้าน 18 แปลงเต็ม</span><span class="price-tag">เริ่มต้น 1,000.-</span></div>
+<div class="price-row"><span>บ้านปกติ</span><span class="price-tag">150.-</span></div>
+<div class="price-row"><span>บ้าน 9 แปลงขึ้นไป</span><span class="price-tag">400.-</span></div>
+<div class="price-row"><span>บ้าน 18 แปลงเต็ม</span><span class="price-tag">1,000.-</span></div>
 
-<a href="https://www.facebook.com/share/174H8Bq6Lz/?mibextid=wwXIfr" class="btn btn-main">ดูรีวิวผลงาน</a>
+<a href="https://www.facebook.com/share/174H8Bq6Lz/?mibextid=wwXIfr" class="btn btn-main" style="background: var(--accent-pink);">ดูรีวิวผลงาน ✨</a>
 </div>
 
 <div class="footer">
@@ -235,7 +263,7 @@ border:1px solid var(--accent-blue);
 </div>
 
 <p class="small">
-© 2026 Arenar Sonin 🥞
+© 2026 ARENAR SONIN 🥞
 </p>
 </div>
 
@@ -243,8 +271,9 @@ border:1px solid var(--accent-blue);
 
 <script>
     // ห้ามลบ script หรือ animation ใดๆ
-    console.log("Welcome to Arenar Sonin Store");
+    console.log("Welcome to Arenar Sonin Store - Minimal Mode Active");
 </script>
 
 </body>
 </html>
+
