@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arenar Sonin - Heartopia House Builder</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 <style>
 :root{
-/* โทนสีนุ่มนวลตามบรีฟ */
 --bg:#faefd9; 
 --main:#fede00; 
 --dark:#5d4037; 
---white:#FFFFFF;
+--white: rgba(255, 255, 255, 0.9); /* ปรับให้โปร่งแสงนิดๆ ให้เห็นพื้นหลังจางๆ */
 --shadow: rgba(93, 64, 55, 0.08);
 --accent-blue:#dfebfd;
 --accent-pink:#ffdef1;
 --soft-glow: rgba(254, 222, 0, 0.3);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
+/* ใช้ฟอนต์ Itim ทั้งเว็บ */
+*{margin:0;padding:0;box-sizing:border-box;font-family: 'Itim', cursive;}
 
 body{
 display:flex;
@@ -28,81 +28,69 @@ justify-content:center;
 min-height: 100vh;
 position: relative;
 overflow-x: hidden;
-/* พื้นหลังเป็นภาพ IMG_9166.jpeg (กำหนดผ่าน CSS) */
-background-color: var(--bg); /* fallback */
+background-color: var(--bg);
 }
 
-/* สร้าง Layer พื้นหลังที่เป็นภาพเบลอ */
+/* พื้นหลังเบลอสวยๆ */
 body::before {
 content: "";
 position: fixed;
 top: 0; left: 0;
 width: 100%; height: 100%;
-/* ใส่รูปพื้นหลัง */
 background-image: url('IMG_9166.jpeg'); 
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
-/* ทำให้ภาพเบลอสวยๆ (ปรับ px ได้ตามชอบ) */
-filter: blur(15px); 
-/* ลดความเข้มภาพลงเล็กน้อยให้ตัวหนังสือชัด */
-opacity: 0.6; 
-transform: scale(1.1); /* ป้องกันขอบเบลอหลุด */
-z-index: -1; /* อยู่หลังเนื้อหาทั้งหมด */
+filter: blur(20px); 
+opacity: 0.5; 
+transform: scale(1.1);
+z-index: -1;
 }
 
 .container{
 max-width:500px;
 width:100%;
 padding:40px 15px;
-z-index: 1; /* เนื้อหาอยู่บนพื้นหลังเบลอ */
+z-index: 1;
 }
 
 .section{
 background:var(--white);
-border-radius:24px;
+border-radius:30px; /* เพิ่มความโค้งมน */
 padding:30px 25px;
 margin-bottom:25px;
-/* เปลี่ยนจากเส้นขอบเป็นเงาละมุน (Soft Shadow) */
 border: none;
 box-shadow: 0 10px 30px var(--shadow);
-transition: transform 0.3s ease;
+backdrop-filter: blur(5px); /* เพิ่มเอฟเฟกต์กระจกฝ้า */
 }
 
-h1,h2,h3{color:var(--dark); font-weight: 500;}
-h1 { font-size: 1.8rem; letter-spacing: 1px; }
-h2 { font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+h1{font-size: 2rem; color:var(--dark); letter-spacing: 1px;}
+h2{font-size: 1.4rem; color:var(--dark); margin-bottom: 20px; display: flex; align-items: center; gap: 8px;}
 
 .center{text-align:center;}
 
-/* แก้ไขกรอบโลโก้เป็นรูปทรงแมว 🐱 */
+/* แมวทรงกลมไร้ขอบ (Rounded Cat Shape) */
 .logo{
-width:130px; height:130px;
+width:140px; height:140px;
 margin:0 auto 25px;
-box-shadow: 0 20px 40px var(--soft-glow);
-/* คงขอบขาวไว้เพื่อความมินิมอล */
-border: 5px solid var(--white); 
-background: var(--white);
-/* ใช้ clip-path สร้างรูปทรงหัวแมว */
+position: relative;
+background: none;
+/* ใช้รูปทรงแมวอ้วนกลมแบบไม่มีเส้นขอบ */
 clip-path: polygon(
-20% 0%, 30% 0%, 40% 15%, 
-60% 15%, 70% 0%, 80% 0%, 
-100% 25%, 100% 75%, 
-80% 100%, 20% 100%, 
-0% 75%, 0% 25%
-);
-/* ทำให้รูปข้างในโค้งตาม */
-border-radius: 30% 30% 20px 20px; 
+    25% 10%, 35% 0%, 45% 10%, 
+    55% 10%, 65% 0%, 75% 10%, 
+    95% 30%, 100% 60%, 
+    90% 95%, 50% 100%, 10% 95%, 
+    0% 60%, 5% 30%);
+box-shadow: 0 15px 35px var(--soft-glow);
 }
 
 .logo img{
 width:100%; height:100%;
 object-fit:cover;
-/* เพื่อให้ภาพถูกตัดตามรูปทรงกรอบแมว */
-border-radius: inherit; 
+border-radius: 0; /* ปล่อยให้ clip-path จัดการรูปทรง */
 }
 
-/* ส่วน Badges ปุ่มกลมเล็กๆ - คงไว้ */
 .badges{
 display:flex;
 flex-wrap:wrap;
@@ -113,37 +101,35 @@ margin-bottom:25px;
 
 .badge{
 background:var(--white);
-padding:6px 16px;
-border-radius:15px;
+padding:8px 18px;
+border-radius:20px;
 box-shadow: 0 4px 15px var(--shadow);
-font-size:12px;
+font-size:14px;
 color:var(--dark);
-border: 1px solid rgba(255,255,255,0.5);
+border: 1px solid rgba(255,255,255,0.8);
 }
 
 .btn{
 display:block;
 text-align:center;
 padding:16px;
-border-radius:18px;
+border-radius:20px;
 text-decoration:none;
 margin-top:15px;
 font-weight:500;
-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+font-size: 1.1rem;
+transition: all 0.3s ease;
 border: none;
 }
 
 .btn:hover { 
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px var(--shadow);
+    transform: translateY(-3px) scale(1.02);
 }
 
-/* ปุ่มเช็คคิวงาน - ลบเส้นประ เปลี่ยนเป็น Soft Light */
 .btn-outline{
 background: var(--white);
 color:var(--dark);
 box-shadow: 0 4px 15px var(--shadow);
-font-size: 14px;
 }
 
 .btn-main{
@@ -157,20 +143,20 @@ display:flex;
 align-items:center;
 gap:15px;
 margin-bottom:16px;
-background: #fafafa;
-padding: 12px;
-border-radius: 15px;
+background: rgba(255, 255, 255, 0.5);
+padding: 12px 18px;
+border-radius: 20px;
 }
 
 .step-num{
 background:var(--accent-blue);
 color:var(--dark);
-width:28px;height:28px;
-border-radius:10px;
+width:30px;height:30px;
+border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:12px;
+font-size:14px;
 font-weight: bold;
 }
 
@@ -178,16 +164,15 @@ font-weight: bold;
 display:flex;
 justify-content:space-between;
 margin-bottom:12px;
-background:var(--white);
-padding:15px 20px;
-border-radius:18px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+background: rgba(255, 255, 255, 0.5);
+padding: 15px 20px;
+border-radius: 20px;
 }
 
 .price-tag{
 color:var(--dark);
-font-weight: 600;
-font-size:15px;
+font-weight: bold;
+font-size:1.1rem;
 }
 
 .footer{
@@ -207,17 +192,16 @@ flex:1;
 max-width:100px;
 text-align:center;
 padding:10px;
-border-radius:15px;
+border-radius:18px;
 background:var(--white);
 text-decoration:none;
 color:var(--dark);
-font-size:12px;
+font-size:14px;
 box-shadow: 0 4px 10px var(--shadow);
 }
 
-.small{font-size:11px; opacity:0.5; margin-top:25px; letter-spacing: 1px;}
+.small{font-size:12px; opacity:0.6; margin-top:25px;}
 
-/* Animation อิโมจิฟุ้งๆ แบบนุ่มนวล */
 .emoji-float {
     display: inline-block;
     animation: floating 4s ease-in-out infinite;
@@ -227,15 +211,14 @@ box-shadow: 0 4px 10px var(--shadow);
     50% { transform: translateY(-8px) rotate(5deg); }
 }
 
-/* แถบสถานะแบบแคปซูลมินิมอล */
 .status-pill {
     background:var(--white); 
-    padding:8px 20px; 
+    padding:10px 25px; 
     border-radius:50px; 
     margin-bottom:25px; 
-    font-size:13px; 
+    font-size:14px; 
     display:inline-block;
-    box-shadow: 0 4px 15px var(--shadow);
+    box-shadow: 0 8px 20px var(--shadow);
 }
 </style>
 </head>
@@ -246,11 +229,11 @@ box-shadow: 0 4px 10px var(--shadow);
 <div class="section center" style="box-shadow:none; background:transparent;">
 
 <div class="logo">
-<img src="logo.jpg" alt="logo">
+<img src="IMG_9166.jpeg" alt="Arenar Sonin Logo">
 </div>
 
 <h1>Arenar Sonin <span class="emoji-float">🥞</span></h1>
-<p style="color:var(--dark); opacity:0.6; margin:10px 0 25px; font-weight: 300;">
+<p style="color:var(--dark); opacity:0.8; margin:10px 0 25px; font-size: 1.1rem;">
 รับสร้างบ้านเกม Heartopia <span class="emoji-float">🍞</span>
 </p>
 
@@ -307,8 +290,7 @@ Check Queue 🥛
 </div>
 
 <script>
-    // ห้ามลบ script หรือ animation ใดๆ
-    console.log("Arenar Sonin - Cat Shape & Blurred Background Active");
+    console.log("Arenar Sonin - Cute Rounded Cat Mode Active");
 </script>
 
 </body>
